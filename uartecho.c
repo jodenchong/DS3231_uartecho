@@ -1,36 +1,4 @@
 /*
- * Copyright (c) 2015-2016, Texas Instruments Incorporated
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * *  Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
- * *  Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- *
- * *  Neither the name of Texas Instruments Incorporated nor the names of
- *    its contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-/*
  *  ======== uartecho.c ========
  */
 #include <stdint.h>
@@ -42,6 +10,7 @@
 #include <ti/drivers/GPIO.h>
 #include <ti/drivers/UART.h>
 #include <ti/drivers/I2C.h>
+#include <ti/drivers/SPI.h>
 
 /* Example/Board Header files */
 #include "Board.h"
@@ -49,6 +18,14 @@
 /*
  *  ======== mainThread ========
  */
+
+#define WREN  6 //write enable
+#define WRDI  4 //write disble
+#define RDSR  5
+#define WRSR  1
+#define READ  3
+#define WRITE 2
+
 #define SET_SECOND  0x00
 #define SET_MIN     0x01
 #define SET_HOUR    0x02
@@ -57,50 +34,6 @@
 #define SET_MONTH   0x05
 #define SET_YEAR    0x06
 
-//uint32_t wantedRxchar;            // Number of char *s received so far
-//uint8_t rxBuf[32];   // Receive buffer
-//uint8_t txBuf[32];   // Transmit buffer
-//uint8_t ptr;
-//uint8_t endBitFind;
-
-// Callback function
-//static void readCallback(UART_Handle handle, void *rxBuf, size_t size)
-//{
-//    uint8_t i;
-    // Copy char *s from RX buffer to TX buffer
-//    if(size < 32){
-//        for(i = 0; i < size; i++){
-//            txBuf[i] = ((uint8_t*)rxBuf)[i];
-//        }
-        // Echo the char *s received back to transmitter
-//        UART_write(handle, txBuf, size);
-        // Start another read, with size the same as it was during first call to
-        // UART_read()
-//        UART_read(handle, rxBuf, wantedRxchar *s);
-//    }
-//    else {
-//        for(i = 0; i < 32; i++) rxBuf[i] = 0;
-//    }
-
-    //    if(rxBuf == '\n' && rxBuf == '\r'){
-    //        endBitFind++;
-    //    }else{
-    //        txBuf[ptr] = (uint8_t*)rxBuf;
-    //        ptr++;
-    //        if(ptr > 63) endBitFind = 2;
-    //    }
-    //    if(endBitFind == 2){
-    //        //txBuf[ptr] = rxBuf;
-    //        UART_write(handle, txBuf, ptr);
-    //        for(i = 0; i < 64; i++) txBuf[i] = 0;
-    //        ptr = 0;
-    //        endBitFind = 0;
-    //    }
-
-//        UART_read(handle, &txBuf, 1);
-//        UART_write(handle, &rxBuf, size);
-
-//}
 uint8_t bcd2bin(uint8_t val)    { return val - 6 * (val >> 4); }
 uint8_t decToBcd(uint8_t val)   { return ( (val/10*16) + (val%10) ); }
 uint8_t         I2CtxBuffer[1];
@@ -127,13 +60,6 @@ void set_DS3231(I2C_Handle handle, uint8_t address, uint16_t data) {
 
     I2C.readCount = 0;
     I2C_transfer(handle, &I2C);
-    //    if (I2C_transfer(handle, &I2C)) {
-    //        return 1;
-    //    }else{
-    //        return 0;
-
-    //    }
-
 }
 
 char get_DS3231(I2C_Handle handle, TIMEDATE timedate){
@@ -160,33 +86,47 @@ char get_DS3231(I2C_Handle handle, TIMEDATE timedate){
 
 }
 
+void system_print(UART_Handle handle, uint8_t * data){
+    char  TXdata[64], i;
+    for(i = 0; i < 64; i++) TXdata[i] = 0;
+    sprintf(TXdata,data);
+    UART_write(handle, TXdata, sizeof(TXdata));
+}
+
 void *mainThread(void *arg0)
 {
+    uint8_t i;
     char  TXdata[64];
     char  RXdata[64];
+
+    uint8_t  SPI_TXdata[32];
+    uint8_t  SPI_RXdata[32];
+
+    for(i = 0; i < 32; i++) SPI_TXdata[i] = 0;
+    for(i = 0; i < 32; i++) SPI_RXdata[i] = 0;
 
     UART_Handle uart;
     UART_Params uartParams;
 
-    timedate_ TXtimedate;
-    timedate_ RXtimedate;
-
+    timedate_ setTimeDate;
+    timedate_ getTimeDate;
 
     I2C_Handle      i2c;
     I2C_Params      i2cParams;
 
-
     uint8_t Temp1, Temp2;
 
-    uint8_t i;
     for(i = 0; i < 64; i++) TXdata[i] = 0;
     /* Call driver init functions */
     GPIO_init();
     UART_init();
     I2C_init();
+    SPI_init(); 
 
     /* Turn on user LED */
-    GPIO_write(Board_GPIO_LED0, Board_GPIO_LED_ON);
+    GPIO_write(Board_GPIO_LED1, Board_GPIO_LED_ON);
+    
+    GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_ON);
 
     /* Create a UART with data processing off. */
     UART_Params_init(&uartParams);
@@ -195,88 +135,200 @@ void *mainThread(void *arg0)
     uartParams.readReturnMode = UART_RETURN_FULL;
     uartParams.readEcho = UART_ECHO_OFF;
     uartParams.baudRate = 115200;
-//    uartParams.readMode = UART_MODE_CALLBACK; // sets up RX for callback mode
-//    uartParams.readCallback = readCallback; // your callback function
+    //    uartParams.readMode = UART_MODE_CALLBACK; // sets up RX for callback mode
+    //    uartParams.readCallback = readCallback;   // your callback function
 
     uart = UART_open(Board_UART0, &uartParams);
-//    wantedRxchar *s = 1;
-//    int rxchar *s = UART_read(uart, rxBuf, wantedRxchar *s);
-    if (uart == NULL) {
-        /* UART_open() failed */
-        while (1);
-    }
-    sprintf(TXdata,"UART init done:\r\n");
-    UART_write(uart, TXdata, sizeof(TXdata));
-
-    /* Create I2C for usage */
+    if (uart == NULL) { while (1); /* UART_open() failed */ }
+    system_print(uart,"UART init done:\r\n");
+    
+    /* Create I2C for usage ---------------------------------------  */
     I2C_Params_init(&i2cParams);
     i2cParams.bitRate = I2C_100kHz;
     i2c = I2C_open(Board_I2C_TMP, &i2cParams);
     if (i2c == NULL) {
-        sprintf(TXdata,"I2C Error:\r\n");
-        UART_write(uart, TXdata, sizeof(TXdata));
+        system_print(uart,"I2C Error:\r\n");
         while (1);
     }
     else {
-        sprintf(TXdata,"I2C Initialized!\r\n");
-        UART_write(uart, TXdata, sizeof(TXdata));
+        system_print(uart,"I2C Initialized!\r\n");
     }
 
+    /* Create SPI for usage ---------------------------------------  */
+    SPI_Handle masterSpi;
+    SPI_Transaction masterTransaction;
+    SPI_Params spiParams;
+    UInt transferOK;
 
+    /* Initialize SPI handle as default master */
+    SPI_Params_init(&spiParams);
+    spiParams.transferMode = SPI_MODE_BLOCKING;
+    spiParams.transferTimeout = SPI_WAIT_FOREVER;
+    spiParams.transferCallbackFxn = NULL;
+    spiParams.mode = SPI_MASTER;
+    spiParams.bitRate = 4000000;
+    spiParams.dataSize = 8;
+
+    masterSpi = SPI_open(Board_SPI0, &spiParams);
+    if (masterSpi == NULL) {
+        system_print(uart,"Error initializing SPI\r\n");
+    }
+    else {
+        system_print(uart,"SPI initialized\r\n");
+
+
+        /* Initialize master SPI transaction structure */
+        GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_ON);
+        masterTransaction.count = 1;
+        SPI_TXdata[0] = WREN;
+        SPI_TXdata[1] = NULL;
+        // SPI_TXdata[4] = NULL;
+        masterTransaction.txBuf = &SPI_TXdata;
+        transferOK = SPI_transfer(masterSpi, &masterTransaction);
+        GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_OFF);
+
+
+        /* Initialize master SPI transaction structure */
+        GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_ON);
+        masterTransaction.count = 4;
+        SPI_TXdata[0] = READ;
+        SPI_TXdata[1] = 0x00;
+        SPI_TXdata[2] = 0x00;
+        // SPI_TXdata[3] = 0x00;
+        // SPI_TXdata[4] = 0x00;
+        SPI_TXdata[3] = NULL;
+        // SPI_TXdata[4] = NULL;
+        masterTransaction.txBuf = &SPI_TXdata;
+        masterTransaction.rxBuf = &SPI_RXdata;
+        transferOK = SPI_transfer(masterSpi, &masterTransaction);
+        GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_OFF);
+        if(transferOK) {
+            /* Print contents of master receive buffer */
+            sprintf(TXdata,"First Read: %s\n", SPI_RXdata);
+            UART_write(uart, TXdata, sizeof(TXdata));
+        }
+        else {
+            system_print(uart,"Unsuccessful master SPI transfer\r\n");
+        }
+
+
+        /* Initialize master SPI transaction structure */
+        GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_ON);
+        masterTransaction.count = 4;
+        SPI_TXdata[0] = WRITE;
+        SPI_TXdata[1] = 0x00;
+        SPI_TXdata[2] = 0x00;
+        // SPI_TXdata[3] = 0x00;
+        // SPI_TXdata[4] = 0x00;
+        SPI_TXdata[3] = 0x55;
+        SPI_TXdata[4] = NULL;
+        // SPI_TXdata[4] = NULL;
+        masterTransaction.txBuf = &SPI_TXdata;
+        // masterTransaction.rxBuf = &SPI_RXdata;
+        transferOK = SPI_transfer(masterSpi, &masterTransaction);
+        GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_OFF);
+
+        // if(transferOK) {
+        //     /* Print contents of master receive buffer */
+        //     sprintf(TXdata,"Write: done\n");
+        //     UART_write(uart, TXdata, sizeof(TXdata));
+        // }
+        // else {
+        //     system_print(uart,"Unsuccessful master SPI transfer\r\n");
+        // }
+
+        /* Initialize master SPI transaction structure */
+
+
+        GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_ON);
+        masterTransaction.count = 4;
+        SPI_TXdata[0] = READ;
+        SPI_TXdata[1] = 0x00;
+        SPI_TXdata[2] = 0x00;
+        // SPI_TXdata[3] = 0x00;
+        // SPI_TXdata[4] = 0x00;
+        SPI_TXdata[3] = NULL;
+        // SPI_TXdata[4] = NULL;
+        masterTransaction.txBuf = &SPI_TXdata;
+        masterTransaction.rxBuf = &SPI_RXdata;
+
+        /* Initiate SPI transfer */
+        transferOK = SPI_transfer(masterSpi, &masterTransaction);
+        GPIO_write(Board_SPI_FLASH_CS, Board_FLASH_CS_OFF);
+
+        if(transferOK) {
+            /* Print contents of master receive buffer */
+            sprintf(TXdata,"Second Read: %s\n", SPI_RXdata);
+            UART_write(uart, TXdata, sizeof(TXdata));
+        }
+        else {
+            system_print(uart,"Unsuccessful master SPI transfer\r\n");
+        }
+    }
 
     /* Start receiving */
     while(1){
         if(UART_read(uart, RXdata, sizeof(RXdata)) > 0){
+            if(RXdata[0] == 'T' && RXdata[1] == 'T'){
+                system_print(uart,"Got tt youuu...\r\n");
+            }
+
+            if(RXdata[0] == 'T' && RXdata[1] == '1')  GPIO_toggle(Board_GPIO_LED1);
+            if(RXdata[0] == 'T' && RXdata[1] == '2')  GPIO_toggle(Board_GPIO_LED2);
+            if(RXdata[0] == 'T' && RXdata[1] == '3')  GPIO_toggle(Board_SPI_FLASH_CS);
+
+
             if(RXdata[0] == 'S' && RXdata[1] == 'T'){
                 // Read Year first
                 Temp1 = RXdata[2] -48;
                 Temp2 = RXdata[3] -48;
-                TXtimedate.year = Temp1*10 + Temp2;
+                setTimeDate.year = Temp1*10 + Temp2;
                 // now month
                 Temp1 = RXdata[4] -48;
                 Temp2 = RXdata[5] -48;
-                TXtimedate.month = Temp1*10 + Temp2;
+                setTimeDate.month = Temp1*10 + Temp2;
                 // now date
                 Temp1 = RXdata[6] -48;
                 Temp2 = RXdata[7] -48;
-                TXtimedate.day = Temp1*10 + Temp2;
+                setTimeDate.day = Temp1*10 + Temp2;
                 // now Day of Week
-                TXtimedate.DoW = RXdata[8] - 48;
+                setTimeDate.DoW = RXdata[8] - 48;
                 // now Hour
                 Temp1 = RXdata[9] -48;
                 Temp2 = RXdata[10] -48;
-                TXtimedate.hour = Temp1*10 + Temp2;
+                setTimeDate.hour = Temp1*10 + Temp2;
                 // now Minute
                 Temp1 = RXdata[11] -48;
                 Temp2 = RXdata[12] -48;
-                TXtimedate.minute = Temp1*10 + Temp2;
+                setTimeDate.minute = Temp1*10 + Temp2;
                 // now Second
                 Temp1 = RXdata[13] -48;
                 Temp2 = RXdata[14] -48;
-                TXtimedate.second = Temp1*10 + Temp2;
+                setTimeDate.second = Temp1*10 + Temp2;
 
-                set_DS3231(i2c, SET_YEAR, TXtimedate.year);
-                set_DS3231(i2c, SET_MONTH, TXtimedate.month);
-                set_DS3231(i2c, SET_DAY, TXtimedate.day);
-                set_DS3231(i2c, SET_DOW, TXtimedate.DoW);
-                set_DS3231(i2c, SET_HOUR, TXtimedate.hour);
-                set_DS3231(i2c, SET_MIN, TXtimedate.minute);
-                set_DS3231(i2c, SET_SECOND, TXtimedate.second);
-            }
-            if(RXdata[0] == 'T' && RXdata[1] == 'T'){
-                sprintf(TXdata,"Got tt youuu...\r\n");
-                UART_write(uart, TXdata, sizeof(TXdata));
+                set_DS3231(i2c, SET_YEAR, setTimeDate.year);
+                set_DS3231(i2c, SET_MONTH, setTimeDate.month);
+                set_DS3231(i2c, SET_DAY, setTimeDate.day);
+                set_DS3231(i2c, SET_DOW, setTimeDate.DoW);
+                set_DS3231(i2c, SET_HOUR, setTimeDate.hour);
+                set_DS3231(i2c, SET_MIN, setTimeDate.minute);
+                set_DS3231(i2c, SET_SECOND, setTimeDate.second);
             }
             if(RXdata[0] == 'R' && RXdata[1] == 'T'){ // RT
-                if(get_DS3231(i2c,&RXtimedate)){
-                    sprintf(TXdata,"%d:%d:%d   %d/%d/%d d:%d%\r\n",RXtimedate.hour,RXtimedate.minute,RXtimedate.second,RXtimedate.day,RXtimedate.month,RXtimedate.year,RXtimedate.DoW);
+                if(get_DS3231(i2c,&getTimeDate)){
+                    sprintf(TXdata,"%d:%d:%d   %d/%d/%d d:%d\r\n",getTimeDate.hour \
+                                                                ,getTimeDate.minute \
+                                                                ,getTimeDate.second \
+                                                                ,getTimeDate.day \
+                                                                ,getTimeDate.month \
+                                                                ,getTimeDate.year \
+                                                                ,getTimeDate.DoW);
                     UART_write(uart, TXdata, sizeof(TXdata));
                 }else{
-                    sprintf(TXdata,"get_DS3231 Error\r\n");
-                    UART_write(uart, TXdata, sizeof(TXdata));
+                    system_print(uart,"get_DS3231 Error\r\n");
                 }
             }
-
+            GPIO_toggle(Board_GPIO_LED2);
             for(i = 0; i < 64; i++) TXdata[i] = 0;
         }
 

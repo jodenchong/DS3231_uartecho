@@ -82,6 +82,7 @@ extern "C" {
 #define Board_GPIO_BUTTON1      CC2640R2_LAUNCHXL_GPIO_S2
 #define Board_GPIO_BTN1         CC2640R2_LAUNCHXL_GPIO_S1
 #define Board_GPIO_BTN2         CC2640R2_LAUNCHXL_GPIO_S2
+<<<<<<< HEAD
 
 #define Board_GPIO_LED1         CC2640R2_LAUNCHXL_GPIO_LED1
 #define Board_GPIO_LED2         CC2640R2_LAUNCHXL_GPIO_LED2
@@ -90,6 +91,13 @@ extern "C" {
 
 #define Board_GPIO_RLED         CC2640R2_LAUNCHXL_GPIO_LED1
 #define Board_GPIO_GLED         CC2640R2_LAUNCHXL_GPIO_LED2
+=======
+#define Board_GPIO_LED0         CC2640R2_LAUNCHXL_GPIO_LED_RED
+#define Board_GPIO_LED1         CC2640R2_LAUNCHXL_GPIO_LED_GREEN
+#define Board_GPIO_LED2         CC2640R2_LAUNCHXL_GPIO_LED_RED
+#define Board_GPIO_RLED         CC2640R2_LAUNCHXL_GPIO_LED_RED
+#define Board_GPIO_GLED         CC2640R2_LAUNCHXL_GPIO_LED_GREEN
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 #define Board_GPIO_LED_ON       CC2640R2_LAUNCHXL_GPIO_LED_ON
 #define Board_GPIO_LED_OFF      CC2640R2_LAUNCHXL_GPIO_LED_OFF
 

@@ -163,11 +163,11 @@ uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/GPIO.h
 uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/UART.h
 uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/I2C.h
 uartecho.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.5.LTS/include/stdbool.h
+uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/SPI.h
 uartecho.obj: ../Board.h
 uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/ADC.h
 uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/ADCBuf.h
 uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/PWM.h
-uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/SPI.h
 uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/Watchdog.h
 uartecho.obj: ../CC2640R2_LAUNCHXL.h
 uartecho.obj: C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/PIN.h
@@ -349,11 +349,11 @@ C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/GPIO.h:
 C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/UART.h: 
 C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/I2C.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.5.LTS/include/stdbool.h: 
+C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/SPI.h: 
 ../Board.h: 
 C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/ADC.h: 
 C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/ADCBuf.h: 
 C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/PWM.h: 
-C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/SPI.h: 
 C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/Watchdog.h: 
 ../CC2640R2_LAUNCHXL.h: 
 C:/ti/simplelink_cc2640r2_sdk_1_40_00_45/source/ti/drivers/PIN.h: 

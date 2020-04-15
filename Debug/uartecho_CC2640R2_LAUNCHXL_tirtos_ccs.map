@@ -2,10 +2,17 @@
                   TI ARM Linker PC v18.12.5                    
 ******************************************************************************
 <<<<<<< HEAD
+<<<<<<< HEAD
 >> Linked Wed Apr 15 17:47:21 2020
 
 OUTPUT FILE NAME:   <uartecho_CC2640R2_LAUNCHXL_tirtos_ccs.out>
 ENTRY POINT SYMBOL: "ResetISR"  address: 000060c5
+=======
+>> Linked Mon Apr 13 19:44:12 2020
+
+OUTPUT FILE NAME:   <uartecho_CC2640R2_LAUNCHXL_tirtos_ccs.out>
+ENTRY POINT SYMBOL: "ResetISR"  address: 00006059
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 >> Linked Mon Apr 13 19:44:12 2020
 
@@ -19,8 +26,13 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
 <<<<<<< HEAD
+<<<<<<< HEAD
   FLASH                 00000000   00020000  000068a8  00019758  R  X
   SRAM                  20000000   00005000  00002019  00002fe7  RW X
+=======
+  FLASH                 00000000   00020000  00006800  00019800  R  X
+  SRAM                  20000000   00005000  00002011  00002fef  RW X
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
   FLASH                 00000000   00020000  00006800  00019800  R  X
   SRAM                  20000000   00005000  00002011  00002fef  RW X
@@ -32,11 +44,19 @@ SEGMENT ALLOCATION MAP
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
 <<<<<<< HEAD
+<<<<<<< HEAD
 00000000    00000000    00000650   00000650    r--
   00000000    00000000    0000003c   0000003c    r-- .resetVecs
   0000003c    0000003c    000003a8   000003a8    r-- .const
   000003e8    000003e8    00000268   00000268    r-- .cinit
 00001000    00001000    00006208   00006208    r-x
+=======
+00000000    00000000    00000648   00000648    r--
+  00000000    00000000    0000003c   0000003c    r-- .resetVecs
+  0000003c    0000003c    000003a8   000003a8    r-- .const
+  000003e8    000003e8    00000260   00000260    r-- .cinit
+00001000    00001000    00006168   00006168    r-x
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00000000    00000000    00000648   00000648    r--
   00000000    00000000    0000003c   0000003c    r-- .resetVecs
@@ -143,7 +163,11 @@ run origin  load origin   length   init length attrs members
   00001328    00001328    00000004   00000004    r-- .const:ti_sysbios_rom_ROM_xdc_runtime_System_SupportProxy_abort__E
   0000132c    0000132c    00000004   00000004    r-- .const:ti_sysbios_rom_ROM_xdc_runtime_System_SupportProxy_exit__E
 <<<<<<< HEAD
+<<<<<<< HEAD
   00001330    00001330    00005ed8   00005ed8    r-x .text
+=======
+  00001330    00001330    00005e38   00005e38    r-x .text
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
   00001330    00001330    00005e38   00005e38    r-x .text
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -164,9 +188,15 @@ run origin  load origin   length   init length attrs members
 20000208    20000208    00001000   00000000    r--
   20000208    20000208    00001000   00000000    r-- .priheap
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001208    20001208    00000a50   00000000    rw-
   20001208    20001208    0000061b   00000000    rw- .bss
   20001828    20001828    00000430   00000000    rw- .data
+=======
+20001208    20001208    00000a48   00000000    rw-
+  20001208    20001208    0000061b   00000000    rw- .bss
+  20001828    20001828    00000428   00000000    rw- .data
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001208    20001208    00000a48   00000000    rw-
   20001208    20001208    0000061b   00000000    rw- .bss
@@ -181,6 +211,7 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
+<<<<<<< HEAD
 <<<<<<< HEAD
 .text      0    00001330    00005ed8     
                   00001330    00000a4e     rtsv7M3_T_le_eabi.lib : _printfi.c.obj (.text:__TI_printfi)
@@ -507,6 +538,11 @@ section   page    origin      length       input sections
 .text      0    00001330    00005e38     
                   00001330    00000a4e     rtsv7M3_T_le_eabi.lib : _printfi.c.obj (.text:__TI_printfi)
                   00001d7e    00000002                           : _lock.c.obj (.text:_nop)
+=======
+.text      0    00001330    00005e38     
+                  00001330    00000a4e     rtsv7M3_T_le_eabi.lib : _printfi.c.obj (.text:__TI_printfi)
+                  00001d7e    00000002                           : _lock.c.obj (.text:_nop)
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
                   00001d80    00000374     uartecho.obj (.text:mainThread)
                   000020f4    00000314     drivers_cc26x0r2.aem3 : PowerCC26XX_calibrateRCOSC.oem3 (.text:PowerCC26XX_auxISR)
                   00002408    00000260     rtsv7M3_T_le_eabi.lib : _printfi.c.obj (.text:_pconv_a)
@@ -822,6 +858,9 @@ section   page    origin      length       input sections
                   00007150    00000008     (.tramp.ti_sysbios_knl_Task_Params__init__S.1)
                   00007158    00000008     (.tramp.ti_sysbios_family_arm_m3_Hwi_restoreFxn__E.1)
                   00007160    00000008     (.tramp.ti_sysbios_knl_Swi_restore__E.1)
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 
 .const     0    0000003c    000003a8     
@@ -860,6 +899,7 @@ section   page    origin      length       input sections
                   000003e0    00000004     release_pem3.oem3 (.const:ti_sysbios_knl_Task_Object__heap__C)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .cinit     0    000003e8    00000268     
                   000003e8    00000121     (.cinit..data.load) [load image, compression = lzss]
                   00000509    00000028     (.cinit..data:ti_sysbios_family_arm_m3_Hwi_Module__state__V.load) [load image, compression = lzss]
@@ -879,6 +919,8 @@ section   page    origin      length       input sections
                   000005e6    00000002     --HOLE-- [fill = 0]
                   000005e8    00000068     (__TI_cinit_table)
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 .cinit     0    000003e8    00000260     
                   000003e8    0000011b     (.cinit..data.load) [load image, compression = lzss]
                   00000503    00000028     (.cinit..data:ti_sysbios_family_arm_m3_Hwi_Module__state__V.load) [load image, compression = lzss]
@@ -897,6 +939,9 @@ section   page    origin      length       input sections
                   000005d7    00000007     (.cinit..data:xdc_runtime_Startup_Module__state__V.load) [load image, compression = lzss]
                   000005de    00000002     --HOLE-- [fill = 0]
                   000005e0    00000068     (__TI_cinit_table)
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 
 .init_array 
@@ -1357,7 +1402,11 @@ section   page    origin      length       input sections
                   20001822    00000001     (.common:driverlib_release_0_48919)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .data      0    20001828    00000430     UNINITIALIZED
+=======
+.data      0    20001828    00000428     UNINITIALIZED
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 .data      0    20001828    00000428     UNINITIALIZED
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -1373,6 +1422,7 @@ section   page    origin      length       input sections
                   20001b10    00000030     release_pem3.oem3 (.data:ti_sysbios_knl_Task_Module_State_0_readyQ__A)
                   20001b40    00000020     release_pem3.oem3 (.data:ti_sysbios_knl_Clock_Object__table__V)
                   20001b60    00000020     release_pem3.oem3 (.data:xdc_runtime_Error_IgnoreBlock)
+<<<<<<< HEAD
 <<<<<<< HEAD
                   20001b80    0000001c     CC2640R2_LAUNCHXL.obj (.data:gpioPinConfigs)
                   20001b9c    00000018     release_pem3.oem3 (.data:ti_sysbios_family_arm_m3_Hwi_Object__table__V)
@@ -1400,6 +1450,8 @@ section   page    origin      length       input sections
                   20001c56    00000001     drivers_cc26x0r2.aem3 : I2C.oem3 (.data)
                   20001c57    00000001                           : UART.oem3 (.data)
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
                   20001b80    00000018     release_pem3.oem3 (.data:ti_sysbios_family_arm_m3_Hwi_Object__table__V)
                   20001b98    00000018     release_pem3.oem3 (.data:ti_sysbios_heaps_HeapMem_Object__table__V)
                   20001bb0    00000014     CC2640R2_LAUNCHXL.obj (.data:gpioPinConfigs)
@@ -1425,6 +1477,9 @@ section   page    origin      length       input sections
                   20001c4c    00000002     release_pem3.oem3 (.data:ti_sysbios_family_arm_m3_Hwi_Module_State_0_excActive__A)
                   20001c4e    00000001     drivers_cc26x0r2.aem3 : I2C.oem3 (.data)
                   20001c4f    00000001                           : UART.oem3 (.data)
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 
 .priheap   0    20000208    00001000     UNINITIALIZED
@@ -1458,12 +1513,21 @@ MODULE SUMMARY
        ------                            ----    -------   -------
     .\
 <<<<<<< HEAD
+<<<<<<< HEAD
        uartecho.obj                      1320    0         12     
        CC2640R2_LAUNCHXL.obj             24      177       560    
        main_tirtos.obj                   104     0         0      
        ccfg.obj                          0       88        0      
     +--+---------------------------------+-------+---------+---------+
        Total:                            1448    265       572    
+=======
+       uartecho.obj                      1214    0         12     
+       CC2640R2_LAUNCHXL.obj             24      177       552    
+       main_tirtos.obj                   104     0         0      
+       ccfg.obj                          0       88        0      
+    +--+---------------------------------+-------+---------+---------+
+       Total:                            1342    265       564    
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
        uartecho.obj                      1214    0         12     
        CC2640R2_LAUNCHXL.obj             24      177       552    
@@ -1514,7 +1578,11 @@ MODULE SUMMARY
        List.oem3                         76      0         0      
     +--+---------------------------------+-------+---------+---------+
 <<<<<<< HEAD
+<<<<<<< HEAD
        Total:                            10102   328       636    
+=======
+       Total:                            10050   328       636    
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
        Total:                            10050   328       636    
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -1571,9 +1639,15 @@ MODULE SUMMARY
                                                                   
        Stack:                            0       0         1024   
 <<<<<<< HEAD
+<<<<<<< HEAD
        Linker Generated:                 464     611       0      
     +--+---------------------------------+-------+---------+---------+
        Grand Total:                      24257   2500      4121   
+=======
+       Linker Generated:                 464     605       0      
+    +--+---------------------------------+-------+---------+---------+
+       Grand Total:                      24099   2494      4113   
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
        Linker Generated:                 464     605       0      
     +--+---------------------------------+-------+---------+---------+
@@ -1583,6 +1657,7 @@ MODULE SUMMARY
 
 LINKER GENERATED COPY TABLES
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 __TI_cinit_table @ 000005e8 records: 13, size/record: 8, table size: 104
 	.data: load addr=000003e8, load size=00000121 bytes, run addr=20001828, run size=00000430 bytes, compression=lzss
@@ -1599,6 +1674,8 @@ __TI_cinit_table @ 000005e8 records: 13, size/record: 8, table size: 104
 	.data:ti_sysbios_family_arm_cc26xx_TimestampProvider_Module__state__V: load addr=000005d8, load size=00000007 bytes, run addr=200001ec, run size=00000004 bytes, compression=lzss
 	.data:xdc_runtime_Startup_Module__state__V: load addr=000005df, load size=00000007 bytes, run addr=200001f0, run size=00000008 bytes, compression=lzss
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 __TI_cinit_table @ 000005e0 records: 13, size/record: 8, table size: 104
 	.data: load addr=000003e8, load size=0000011b bytes, run addr=20001828, run size=00000428 bytes, compression=lzss
 	.data:ti_sysbios_family_arm_m3_Hwi_Module__state__V: load addr=00000503, load size=00000028 bytes, run addr=20000144, run size=00000034 bytes, compression=lzss
@@ -1613,13 +1690,20 @@ __TI_cinit_table @ 000005e0 records: 13, size/record: 8, table size: 104
 	.data:xdc_runtime_Memory_Module__state__V: load addr=000005c8, load size=00000008 bytes, run addr=20000200, run size=00000004 bytes, compression=lzss
 	.data:ti_sysbios_family_arm_cc26xx_TimestampProvider_Module__state__V: load addr=000005d0, load size=00000007 bytes, run addr=200001ec, run size=00000004 bytes, compression=lzss
 	.data:xdc_runtime_Startup_Module__state__V: load addr=000005d7, load size=00000007 bytes, run addr=200001f0, run size=00000008 bytes, compression=lzss
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 
 
 LINKER GENERATED HANDLER TABLE
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __TI_handler_table @ 000005a0 records: 3, size/record: 4, table size: 12
+=======
+__TI_handler_table @ 00000598 records: 3, size/record: 4, table size: 12
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 __TI_handler_table @ 00000598 records: 3, size/record: 4, table size: 12
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -1634,6 +1718,7 @@ callee name               trampoline name
    callee addr  tramp addr   call addr  call info
 --------------  -----------  ---------  ----------------
 ti_sysbios_knl_Swi_destruct  $Tramp$TT$L$PI$$ti_sysbios_knl_Swi_destruct
+<<<<<<< HEAD
 <<<<<<< HEAD
    1001c115     00007038     00007014   dpl_cc26x0r2.aem3 : SwiP_tirtos.oem3 (.text:SwiP_destruct)
 ti_sysbios_family_arm_m3_Hwi_enableInterrupt__E  $Tramp$TT$L$PI$$ti_sysbios_family_arm_m3_Hwi_enableInterrupt__E
@@ -2034,6 +2119,206 @@ ti_sysbios_knl_Swi_restore__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Swi_restore__E
 [58 trampolines]
 [138 trampoline calls]
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
+   1001c115     00006f98     00006f74   dpl_cc26x0r2.aem3 : SwiP_tirtos.oem3 (.text:SwiP_destruct)
+ti_sysbios_family_arm_m3_Hwi_enableInterrupt__E  $Tramp$TT$L$PI$$ti_sysbios_family_arm_m3_Hwi_enableInterrupt__E
+   1001af89     00006fa0     00006f60   dpl_cc26x0r2.aem3 : HwiP_tirtos.oem3 (.text:HwiP_enableInterrupt)
+ti_sysbios_family_arm_m3_Hwi_disableInterrupt__E  $Tramp$TT$L$PI$$ti_sysbios_family_arm_m3_Hwi_disableInterrupt__E
+   1001af45     00006fa8     00006f5c   dpl_cc26x0r2.aem3 : HwiP_tirtos.oem3 (.text:HwiP_disableInterrupt)
+ti_sysbios_family_arm_m3_Hwi_disableFxn__E  $Tramp$TT$L$PI$$ti_sysbios_family_arm_m3_Hwi_disableFxn__E
+   1001bf85     00006fb0     00006f58   dpl_cc26x0r2.aem3 : HwiP_tirtos.oem3 (.text:HwiP_disable)
+ti_sysbios_family_arm_m3_Hwi_destruct  $Tramp$TT$L$PI$$ti_sysbios_family_arm_m3_Hwi_destruct
+   1001c0a9     00006fb8     00006f54   dpl_cc26x0r2.aem3 : HwiP_tirtos.oem3 (.text:HwiP_destruct)
+ti_sysbios_BIOS_getCpuFreq__E  $Tramp$TT$L$PI$$ti_sysbios_BIOS_getCpuFreq__E
+   1001be91     00006fc0     00006f44   dpl_cc26x0r2.aem3 : ClockP_tirtos.oem3 (.text:ClockP_getCpuFreq)
+ti_sysbios_knl_Clock_destruct  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_destruct
+   1001c0dd     00006fc8     00006f40   dpl_cc26x0r2.aem3 : ClockP_tirtos.oem3 (.text:ClockP_destruct)
+ti_sysbios_knl_Semaphore_delete  $Tramp$TT$L$PI$$ti_sysbios_knl_Semaphore_delete
+   1001c109     00006fd0     00006e82   dpl_cc26x0r2.aem3 : SemaphoreP_tirtos.oem3 (.text:SemaphoreP_delete)
+xdc_runtime_Startup_startMods__I  $Tramp$TT$L$PI$$xdc_runtime_Startup_startMods__I
+   1001c129     00006fd8     00006d7c   release_pem3.oem3 (.text:xdc_runtime_Startup_exec__I)
+ti_sysbios_knl_Clock_logTick__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_logTick__E
+   1001b843     00006fe0     00006d2a   release_pem3.oem3 (.text:ti_sysbios_knl_Clock_doTick__I)
+ti_sysbios_knl_Swi_post__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Swi_post__E
+   1001b011     00006fe8     00006c60   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Swi_or__E)
+                             00006d32   release_pem3.oem3 (.text:ti_sysbios_knl_Clock_doTick__I)
+                             00006f84   dpl_cc26x0r2.aem3 : SwiP_tirtos.oem3 (.text:SwiP_post)
+ti_sysbios_BIOS_RtsGateProxy_leave__E  $Tramp$TT$L$PI$$ti_sysbios_BIOS_RtsGateProxy_leave__E
+   1001c095     00006ff0     00006c42   release_pem3.oem3 (.text:ti_sysbios_BIOS_rtsUnlock__I)
+ti_sysbios_knl_Swi_construct  $Tramp$TT$L$PI$$ti_sysbios_knl_Swi_construct
+   1001ad79     00006ff8     00006b12   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Swi_construct2__E)
+ti_sysbios_BIOS_RtsGateProxy_enter__E  $Tramp$TT$L$PI$$ti_sysbios_BIOS_RtsGateProxy_enter__E
+   1001c091     00007000     00006a22   release_pem3.oem3 (.text:ti_sysbios_BIOS_rtsLock__I)
+ti_sysbios_knl_Semaphore_create  $Tramp$TT$L$PI$$ti_sysbios_knl_Semaphore_create
+   1001b2d1     00007008     00006764   dpl_cc26x0r2.aem3 : SemaphoreP_tirtos.oem3 (.text:SemaphoreP_createBinary)
+ti_sysbios_knl_Task_startup__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Task_startup__E
+   1001c125     00007010     000065f8   release_pem3.oem3 (.text:ti_sysbios_BIOS_startFunc__I)
+ti_sysbios_knl_Swi_startup__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Swi_startup__E
+   1001c085     00007018     000065f4   release_pem3.oem3 (.text:ti_sysbios_BIOS_startFunc__I)
+ti_sysbios_hal_Hwi_startup__E  $Tramp$TT$L$PI$$ti_sysbios_hal_Hwi_startup__E
+   1001c04b     00007020     000065f0   release_pem3.oem3 (.text:ti_sysbios_BIOS_startFunc__I)
+ti_sysbios_family_arm_cc26xx_Timer_startup__E  $Tramp$TT$L$PI$$ti_sysbios_family_arm_cc26xx_Timer_startup__E
+   1001b4e9     00007028     000065ec   release_pem3.oem3 (.text:ti_sysbios_BIOS_startFunc__I)
+xdc_runtime_System_atexit__E  $Tramp$TT$L$PI$$xdc_runtime_System_atexit__E
+   1001c581     00007030     000065e4   release_pem3.oem3 (.text:ti_sysbios_BIOS_startFunc__I)
+ti_sysbios_BIOS_linkedWithIncorrectBootLibrary__E  $Tramp$TT$L$PI$$ti_sysbios_BIOS_linkedWithIncorrectBootLibrary__E
+   1001a683     00007038     000065de   release_pem3.oem3 (.text:ti_sysbios_BIOS_startFunc__I)
+xdc_runtime_Startup_rtsDone__E  $Tramp$TT$L$PI$$xdc_runtime_Startup_rtsDone__E
+   1001c769     00007040     000065d6   release_pem3.oem3 (.text:ti_sysbios_BIOS_startFunc__I)
+ti_sysbios_BIOS_setThreadType__E  $Tramp$TT$L$PI$$ti_sysbios_BIOS_setThreadType__E
+   1001bea1     00007048     000065b0   release_pem3.oem3 (.text:ti_sysbios_BIOS_atExitFunc__I)
+                             00006cce   release_pem3.oem3 (.text:ti_sysbios_BIOS_errorRaiseHook__I)
+                             00006cde   release_pem3.oem3 (.text:ti_sysbios_BIOS_exitFunc__I)
+ti_sysbios_knl_Swi_disable__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Swi_disable__E
+   1001bf11     00007050     000065a6   release_pem3.oem3 (.text:ti_sysbios_BIOS_atExitFunc__I)
+                             00006f78   dpl_cc26x0r2.aem3 : SwiP_tirtos.oem3 (.text:SwiP_disable)
+ti_sysbios_family_arm_m3_Hwi_construct  $Tramp$TT$L$PI$$ti_sysbios_family_arm_m3_Hwi_construct
+   1001aabd     00007058     0000636e   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_family_arm_m3_Hwi_construct2__E)
+ti_sysbios_knl_Swi_Params__init__S  $Tramp$TT$L$PI$$ti_sysbios_knl_Swi_Params__init__S
+   1001c015     00007060     00006332   dpl_cc26x0r2.aem3 : SwiP_tirtos.oem3 (.text:SwiP_construct)
+ti_sysbios_family_arm_m3_Hwi_Params__init__S  $Tramp$TT$L$PI$$ti_sysbios_family_arm_m3_Hwi_Params__init__S
+   1001bf79     00007068     000060fc   dpl_cc26x0r2.aem3 : HwiP_tirtos.oem3 (.text:HwiP_construct)
+xdc_runtime_System_exit__E  $Tramp$TT$L$PI$$xdc_runtime_System_exit__E
+   1001c6d5     00007070     00006084   boot.aem3 : boot.oem3 (.text)
+                             00006ce4   release_pem3.oem3 (.text:ti_sysbios_BIOS_exitFunc__I)
+ti_sysbios_knl_Clock_construct  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_construct
+   1001b269     00007078     00005e54   dpl_cc26x0r2.aem3 : ClockP_tirtos.oem3 (.text:ClockP_construct)
+ti_sysbios_knl_Clock_Params__init__S  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_Params__init__S
+   1001bfc1     00007080     00005e44   dpl_cc26x0r2.aem3 : ClockP_tirtos.oem3 (.text:ClockP_construct)
+ti_sysbios_heaps_HeapMem_restore__E  $Tramp$TT$L$PI$$ti_sysbios_heaps_HeapMem_restore__E
+   1001bf41     00007088     000059d8   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_heaps_HeapMem_initPrimary__I)
+ti_sysbios_heaps_HeapMem_Object__get__S  $Tramp$TT$L$PI$$ti_sysbios_heaps_HeapMem_Object__get__S
+   1001b5c5     00007090     000059a8   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_heaps_HeapMem_initPrimary__I)
+ti_sysbios_BIOS_start__E  $Tramp$TT$L$PI$$ti_sysbios_BIOS_start__E
+   1001beb1     00007098     000057aa   main_tirtos.obj (.text:main)
+ti_sysbios_knl_Semaphore_post__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Semaphore_post__E
+   1001a3e1     000070a0     00005082   rom_sysbios.aem3 : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+                             000056b2                    : rom_sysbios.obj (.text:_pthread_runStub)
+                             00006f70   dpl_cc26x0r2.aem3 : SemaphoreP_tirtos.oem3 (.text:SemaphoreP_post)
+ti_sysbios_knl_Queue_next__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Queue_next__E
+   1001c105     000070a8     00005052   rom_sysbios.aem3 : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+ti_sysbios_knl_Queue_head__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Queue_head__E
+   1001c101     000070b0     0000503e   rom_sysbios.aem3 : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+ti_sysbios_knl_Semaphore_pend__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Semaphore_pend__E
+   10019b05     000070b8     00005038   rom_sysbios.aem3 : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+                             00006d50   dpl_cc26x0r2.aem3 : SemaphoreP_tirtos.oem3 (.text:SemaphoreP_pend)
+ti_sysbios_knl_Clock_scheduleNextTick__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_scheduleNextTick__E
+   1001bca9     000070c0     00004b80   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Clock_workFuncDynamic__E)
+ti_sysbios_knl_Clock_walkQueueDynamic__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_walkQueueDynamic__E
+   1001a2f1     000070c8     00004b4a   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Clock_workFuncDynamic__E)
+                             00004b64                    : rom_sysbios.obj (.text:ti_sysbios_knl_Clock_workFuncDynamic__E)
+ti_sysbios_knl_Clock_TimerProxy_getCurrentTick__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_TimerProxy_getCurrentTick__E
+   1001bee1     000070d0     00004b1a   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Clock_workFuncDynamic__E)
+                             00006782                    : rom_sysbios.obj (.text:ti_sysbios_knl_Clock_getTicksUntilInterrupt__E)
+ti_sysbios_knl_Task_restore__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Task_restore__E
+   1001b7f5     000070d8     00004926   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Task_setPri__E)
+                             0000502c                    : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+                             0000508c                    : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+                             000056c2                    : rom_sysbios.obj (.text:_pthread_runStub)
+                             000056ca                    : rom_sysbios.obj (.text:_pthread_runStub)
+                             000069ce   dpl_cc26x0r2.aem3 : PowerCC26XX_tirtos.oem3 (.text:PowerCC26XX_schedulerRestore)
+ti_sysbios_knl_Queue_enqueue__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Queue_enqueue__E
+   1001bffd     000070e0     000048f8   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Task_setPri__E)
+                             00006f8c                    : rom_sysbios.obj (.text:ti_sysbios_knl_Queue_insert__E)
+ti_sysbios_knl_Queue_empty__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Queue_empty__E
+   1001bf4f     000070e8     000048e0   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Task_setPri__E)
+                             00005024                    : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+ti_sysbios_knl_Queue_remove__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Queue_remove__E
+   1001bf5d     000070f0     000048da   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Task_setPri__E)
+                             0000505a                    : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+                             00005060                    : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+ti_sysbios_knl_Task_disable__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Task_disable__E
+   1001bf31     000070f8     000048a0   rom_sysbios.aem3 : rom_sysbios.obj (.text:ti_sysbios_knl_Task_setPri__E)
+                             0000501a                    : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+                             000056a4                    : rom_sysbios.obj (.text:_pthread_runStub)
+                             000065aa   release_pem3.oem3 (.text:ti_sysbios_BIOS_atExitFunc__I)
+                             0000699e   dpl_cc26x0r2.aem3 : PowerCC26XX_tirtos.oem3 (.text:PowerCC26XX_schedulerDisable)
+ti_sysbios_knl_Clock_stop__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_stop__E
+   1001bab9     00007100     000040f4   dpl_cc26x0r2.aem3 : PowerCC26XX_tirtos.oem3 (.text:PowerCC26XX_standbyPolicy)
+                             00006f50                     : ClockP_tirtos.oem3 (.text:ClockP_stop)
+ti_sysbios_knl_Clock_start__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_start__E
+   1001be1f     00007108     000040e8   dpl_cc26x0r2.aem3 : PowerCC26XX_tirtos.oem3 (.text:PowerCC26XX_standbyPolicy)
+                             00006f4c                     : ClockP_tirtos.oem3 (.text:ClockP_start)
+ti_sysbios_knl_Clock_setTimeout__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Clock_setTimeout__E
+   1001c0e5     00007110     000040e2   dpl_cc26x0r2.aem3 : PowerCC26XX_tirtos.oem3 (.text:PowerCC26XX_standbyPolicy)
+                             00006f48                     : ClockP_tirtos.oem3 (.text:ClockP_setTimeout)
+xdc_runtime_Memory_free__E  $Tramp$TT$L$PI$$xdc_runtime_Memory_free__E
+   1001c705     00007118     00003faa   rom_sysbios.aem3 : rom_sysbios.obj (.text:pthread_create)
+                             00005078                    : rom_sysbios.obj (.text:_pthread_removeThreadKeys)
+                             000056de                    : rom_sysbios.obj (.text:_pthread_runStub)
+ti_sysbios_knl_Semaphore_destruct  $Tramp$TT$L$PI$$ti_sysbios_knl_Semaphore_destruct
+   1001c10d     00007120     00003fa0   rom_sysbios.aem3 : rom_sysbios.obj (.text:pthread_create)
+                             000056d2                    : rom_sysbios.obj (.text:_pthread_runStub)
+                             00006f6c   dpl_cc26x0r2.aem3 : SemaphoreP_tirtos.oem3 (.text:SemaphoreP_destruct)
+ti_sysbios_knl_Task_create  $Tramp$TT$L$PI$$ti_sysbios_knl_Task_create
+   1001accd     00007128     00003f86   rom_sysbios.aem3 : rom_sysbios.obj (.text:pthread_create)
+ti_sysbios_knl_Semaphore_construct  $Tramp$TT$L$PI$$ti_sysbios_knl_Semaphore_construct
+   1001b45d     00007130     00003f7c   rom_sysbios.aem3 : rom_sysbios.obj (.text:pthread_create)
+                             0000673a   dpl_cc26x0r2.aem3 : SemaphoreP_tirtos.oem3 (.text:SemaphoreP_constructBinary)
+ti_sysbios_knl_Semaphore_Params__init__S  $Tramp$TT$L$PI$$ti_sysbios_knl_Semaphore_Params__init__S
+   1001c009     00007138     00003f68   rom_sysbios.aem3 : rom_sysbios.obj (.text:pthread_create)
+                             0000672a   dpl_cc26x0r2.aem3 : SemaphoreP_tirtos.oem3 (.text:SemaphoreP_constructBinary)
+                             00006754                     : SemaphoreP_tirtos.oem3 (.text:SemaphoreP_createBinary)
+ti_sysbios_knl_Queue_construct  $Tramp$TT$L$PI$$ti_sysbios_knl_Queue_construct
+   1001b6a1     00007140     00003f5c   rom_sysbios.aem3 : rom_sysbios.obj (.text:pthread_create)
+xdc_runtime_Memory_alloc__E  $Tramp$TT$L$PI$$xdc_runtime_Memory_alloc__E
+   1001c349     00007148     00003f10   rom_sysbios.aem3 : rom_sysbios.obj (.text:pthread_create)
+ti_sysbios_knl_Task_Params__init__S  $Tramp$TT$L$PI$$ti_sysbios_knl_Task_Params__init__S
+   1001c021     00007150     00003efa   rom_sysbios.aem3 : rom_sysbios.obj (.text:pthread_create)
+ti_sysbios_family_arm_m3_Hwi_restoreFxn__E  $Tramp$TT$L$PI$$ti_sysbios_family_arm_m3_Hwi_restoreFxn__E
+   1001c061     00007158     00003166   drivers_cc26x0r2.aem3 : UARTCC26XX.oem3 (.text:UARTCC26XX_open)
+                             00003172                         : UARTCC26XX.oem3 (.text:UARTCC26XX_open)
+                             000031f8                         : UARTCC26XX.oem3 (.text:UARTCC26XX_open)
+                             000032c8                         : I2CCC26XX.oem3 (.text:I2CCC26XX_open)
+                             000032d8                         : I2CCC26XX.oem3 (.text:I2CCC26XX_open)
+                             00003358                         : I2CCC26XX.oem3 (.text:I2CCC26XX_open)
+                             00003970                         : UARTCC26XX.oem3 (.text:UARTCC26XX_read)
+                             000039ae                         : UARTCC26XX.oem3 (.text:UARTCC26XX_read)
+                             00003c22                         : UARTCC26XX.oem3 (.text:UARTCC26XX_write)
+                             00003c3e                         : UARTCC26XX.oem3 (.text:UARTCC26XX_write)
+                             00003cdc                         : UARTCC26XX.oem3 (.text:UARTCC26XX_write)
+                             00003e5a                         : GPIOCC26XX.oem3 (.text:GPIO_setConfig)
+                             00003e8a                         : GPIOCC26XX.oem3 (.text:GPIO_setConfig)
+                             00004074                         : PINCC26XX.oem3 (.text:PINCC26XX_setIoCfg)
+                             00004278                         : I2CCC26XX.oem3 (.text:I2CCC26XX_transfer)
+                             0000428a                         : I2CCC26XX.oem3 (.text:I2CCC26XX_transfer)
+                             0000431c                         : GPIOCC26XX.oem3 (.text:GPIO_init)
+                             00004322                         : GPIOCC26XX.oem3 (.text:GPIO_init)
+                             00004462                         : PowerCC26XX.oem3 (.text:Power_releaseDependency)
+                             000045d0                         : PowerCC26XX.oem3 (.text:Power_setDependency)
+                             00004c6e                         : UARTCC26XX.oem3 (.text:writeFinishedDoCallback)
+                             00004d46                         : I2CCC26XX.oem3 (.text:I2CCC26XX_cancel)
+                             00004ee6                         : UARTCC26XX.oem3 (.text:UARTCC26XX_close)
+                             00004f16                         : UARTCC26XX.oem3 (.text:UARTCC26XX_writeCancel)
+                             00004f22                         : UARTCC26XX.oem3 (.text:UARTCC26XX_writeCancel)
+                             00004f68                         : UARTCC26XX.oem3 (.text:UARTCC26XX_writeCancel)
+                             00005218                         : PowerCC26XX.oem3 (.text:switchXOSCHFclockFunc)
+                             00005496                         : PowerCC26XX_calibrateRCOSC.oem3 (.text:PowerCC26XX_initiateCalibration)
+                             000055a0                         : I2CCC26XX.oem3 (.text:I2CCC26XX_close)
+                             0000564c                         : UARTCC26XX.oem3 (.text:UARTCC26XX_readCancel)
+                             00005658                         : UARTCC26XX.oem3 (.text:UARTCC26XX_readCancel)
+                             00005662                         : UARTCC26XX.oem3 (.text:UARTCC26XX_readCancel)
+                             00005b3c                         : UARTCC26XX.oem3 (.text:UARTCC26XX_control)
+                             00005bf2                         : GPIOCC26XX.oem3 (.text:GPIO_write)
+                             00005ea6                         : PINCC26XX.oem3 (.text:PIN_setOutputEnable)
+                             00006026                         : RingBuf.oem3 (.text:RingBuf_put)
+                             00006050                         : RingBuf.oem3 (.text:RingBuf_put)
+                             0000614e                         : I2C.oem3 (.text:I2C_init)
+                             000061ce                         : UART.oem3 (.text:UART_init)
+                             0000628c                         : RingBuf.oem3 (.text:RingBuf_get)
+                             00006294                         : RingBuf.oem3 (.text:RingBuf_get)
+                             000063b8                         : GPIOCC26XX.oem3 (.text:GPIO_enableInt)
+                             0000641e                         : UARTCC26XX.oem3 (.text:UARTCC26XX_swiIntFxn)
+                             00006532                         : PowerCC26XX.oem3 (.text:Power_releaseConstraint)
+                             00006598                         : PowerCC26XX.oem3 (.text:Power_setConstraint)
+                             00006954                         : List.oem3 (.text:List_put)
+                             000069f0                         : PowerCC26XX.oem3 (.text:Power_unregisterNotify)
+ti_sysbios_knl_Swi_restore__E  $Tramp$TT$L$PI$$ti_sysbios_knl_Swi_restore__E
+   1001b305     00007160     00002840   drivers_cc26x0r2.aem3 : PowerCC26XX.oem3 (.text:Power_sleep)
+
+[58 trampolines]
+[138 trampoline calls]
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
@@ -2043,6 +2328,7 @@ address   name
 000003ac  ADCBuf_count                                                              
 000003ad  ADC_count                                                                 
 00000254  BoardGpioInitTable                                                        
+<<<<<<< HEAD
 <<<<<<< HEAD
 00006be5  CC2640R2_LAUNCHXL_initGeneral                                             
 00006fb9  ClockP_Params_init                                                        
@@ -2198,6 +2484,8 @@ UNDEFED   SHT$$INIT_ARRAY$$Limit
 00006f79  UART_read                                                                 
 00006f83  UART_write                                                                
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 00006b45  CC2640R2_LAUNCHXL_initGeneral                                             
 00006f19  ClockP_Params_init                                                        
 00005e29  ClockP_construct                                                          
@@ -2350,6 +2638,9 @@ UNDEFED   SHT$$INIT_ARRAY$$Limit
 000061e1  UART_open                                                                 
 00006ed9  UART_read                                                                 
 00006ee3  UART_write                                                                
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 000003b4  Watchdog_count                                                            
 00000000  __ASM__                                                                   
@@ -2359,6 +2650,7 @@ UNDEFED   SHT$$INIT_ARRAY$$Limit
 00000400  __STACK_SIZE                                                              
 000000b8  __TARG__                                                                  
 <<<<<<< HEAD
+<<<<<<< HEAD
 000005e8  __TI_CINIT_Base                                                           
 00000650  __TI_CINIT_Limit                                                          
 000005a0  __TI_Handler_Table_Base                                                   
@@ -2367,6 +2659,8 @@ UNDEFED   SHT$$INIT_ARRAY$$Limit
 00005709  __TI_decompress_lzss                                                      
 00006e9f  __TI_decompress_none                                                      
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 000005e0  __TI_CINIT_Base                                                           
 00000648  __TI_CINIT_Limit                                                          
 00000598  __TI_Handler_Table_Base                                                   
@@ -2374,12 +2668,16 @@ UNDEFED   SHT$$INIT_ARRAY$$Limit
 000047f9  __TI_auto_init                                                            
 000056e9  __TI_decompress_lzss                                                      
 00006dff  __TI_decompress_none                                                      
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 ffffffff  __TI_pprof_out_hndl                                                       
 00001331  __TI_printfi                                                              
 ffffffff  __TI_prof_data_size                                                       
 ffffffff  __TI_prof_data_start                                                      
 000003e8  __TI_static_base__                                                        
+<<<<<<< HEAD
 <<<<<<< HEAD
 00006f4d  __TI_zero_init                                                            
 000000dd  __TRDR__                                                                  
@@ -2409,6 +2707,10 @@ ffffffff  __TI_prof_data_start
 =======
 00006ead  __TI_zero_init                                                            
 000000dd  __TRDR__                                                                  
+=======
+00006ead  __TI_zero_init                                                            
+000000dd  __TRDR__                                                                  
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 0000509d  __aeabi_cdcmpeq                                                           
 0000509d  __aeabi_cdcmple                                                           
 00005123  __aeabi_cdrcmple                                                          
@@ -2432,6 +2734,9 @@ ffffffff  __TI_prof_data_start
 0000522f  __aeabi_memset4                                                           
 0000522f  __aeabi_memset8                                                           
 00004b9d  __aeabi_uldivmod                                                          
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 ffffffff  __binit__                                                                 
 ffffffff  __c_args__                                                                
@@ -2439,6 +2744,7 @@ ffffffff  __c_args__
 20001208  __primary_heap_end__                                                      
 20000208  __primary_heap_start__                                                    
 20004c00  __stack                                                                   
+<<<<<<< HEAD
 <<<<<<< HEAD
 00006c5d  _args_main                                                                
 000060c5  _c_int00                                                                  
@@ -2493,6 +2799,8 @@ ffffffff  binit
 00006da1  strlen                                                                    
 00005e49  system_print                                                              
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 00006bbd  _args_main                                                                
 00006059  _c_int00                                                                  
 0000003c  _ctypes_                                                                  
@@ -2544,6 +2852,9 @@ ffffffff  binit
 00006221  sprintf                                                                   
 00006ca9  strchr                                                                    
 00006d01  strlen                                                                    
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 200001a4  ti_sysbios_BIOS_Module__state__V                                          
 1001b9d9  ti_sysbios_BIOS_RtsGateProxy_Handle__label__S                             
@@ -2555,6 +2866,7 @@ ffffffff  binit
 1001c095  ti_sysbios_BIOS_RtsGateProxy_leave__E                                     
 1001c0bd  ti_sysbios_BIOS_RtsGateProxy_query__E                                     
 1001c0bd  ti_sysbios_BIOS_RtsGateProxy_query__E__mangled__                          
+<<<<<<< HEAD
 <<<<<<< HEAD
 00006645  ti_sysbios_BIOS_atExitFunc__I                                             
 00006d5f  ti_sysbios_BIOS_errorRaiseHook__I                                         
@@ -2572,6 +2884,8 @@ ffffffff  binit
 1001beb1  ti_sysbios_BIOS_start__E                                                  
 0000476d  ti_sysbios_family_arm_cc26xx_Boot_trimDevice                              
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 000065a5  ti_sysbios_BIOS_atExitFunc__I                                             
 00006cbf  ti_sysbios_BIOS_errorRaiseHook__I                                         
 00006cd5  ti_sysbios_BIOS_exitFunc__I                                               
@@ -2587,12 +2901,16 @@ ffffffff  binit
 000065d5  ti_sysbios_BIOS_startFunc__I                                              
 1001beb1  ti_sysbios_BIOS_start__E                                                  
 0000474d  ti_sysbios_family_arm_cc26xx_Boot_trimDevice                              
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 00001280  ti_sysbios_family_arm_cc26xx_Timer_Module__id__C                          
 1001b8f9  ti_sysbios_family_arm_cc26xx_Timer_Module__startupDone__S                 
 200001e4  ti_sysbios_family_arm_cc26xx_Timer_Module__state__V                       
 1001b845  ti_sysbios_family_arm_cc26xx_Timer_Module_startup__E                      
 20001a30  ti_sysbios_family_arm_cc26xx_Timer_Object__table__V                       
+<<<<<<< HEAD
 <<<<<<< HEAD
 00006add  ti_sysbios_family_arm_cc26xx_Timer_dynamicStub__E                         
 00006db5  ti_sysbios_family_arm_cc26xx_Timer_getCount64__E                          
@@ -2622,12 +2940,31 @@ ffffffff  binit
 00005f01  ti_sysbios_family_arm_cc26xx_Timer_setThreshold__I                        
 00005321  ti_sysbios_family_arm_cc26xx_Timer_start__E                               
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
+00006a3d  ti_sysbios_family_arm_cc26xx_Timer_dynamicStub__E                         
+00006d15  ti_sysbios_family_arm_cc26xx_Timer_getCount64__E                          
+00006605  ti_sysbios_family_arm_cc26xx_Timer_getCurrentTick__E                      
+1001c099  ti_sysbios_family_arm_cc26xx_Timer_getExpiredTicks__E                     
+00006915  ti_sysbios_family_arm_cc26xx_Timer_getMaxTicks__E                         
+1001c09d  ti_sysbios_family_arm_cc26xx_Timer_getPeriod__E                           
+00006541  ti_sysbios_family_arm_cc26xx_Timer_initDevice__I                          
+10019f25  ti_sysbios_family_arm_cc26xx_Timer_periodicStub__E                        
+1001b4bd  ti_sysbios_family_arm_cc26xx_Timer_postInit__I                            
+00006439  ti_sysbios_family_arm_cc26xx_Timer_setNextTick__E                         
+1001c0a1  ti_sysbios_family_arm_cc26xx_Timer_setPeriod__E                           
+00005f01  ti_sysbios_family_arm_cc26xx_Timer_setThreshold__I                        
+00005321  ti_sysbios_family_arm_cc26xx_Timer_start__E                               
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 000011f8  ti_sysbios_family_arm_cc26xx_Timer_startupNeeded__C                       
 1001b4e9  ti_sysbios_family_arm_cc26xx_Timer_startup__E                             
 200001ec  ti_sysbios_family_arm_cc26xx_TimestampProvider_Module__state__V           
 1001b919  ti_sysbios_family_arm_cc26xx_TimestampProvider_Module_startup__E          
 <<<<<<< HEAD
+<<<<<<< HEAD
 00006ebb  ti_sysbios_family_arm_cc26xx_TimestampProvider_get32__E                   
+=======
+00006e1b  ti_sysbios_family_arm_cc26xx_TimestampProvider_get32__E                   
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00006e1b  ti_sysbios_family_arm_cc26xx_TimestampProvider_get32__E                   
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2639,17 +2976,23 @@ ffffffff  binit
 1001a755  ti_sysbios_family_arm_m3_Hwi_Instance_finalize__E                         
 10019fc1  ti_sysbios_family_arm_m3_Hwi_Instance_init__E                             
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001c54  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excActive__A                  
 20001c48  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excContext__A                 
 20001c4c  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excStack__A                   
 00001284  ti_sysbios_family_arm_m3_Hwi_Module__id__C                                
 20001bdc  ti_sysbios_family_arm_m3_Hwi_Module__root__V                              
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 20001c4c  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excActive__A                  
 20001c40  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excContext__A                 
 20001c44  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excStack__A                   
 00001284  ti_sysbios_family_arm_m3_Hwi_Module__id__C                                
 20001bd4  ti_sysbios_family_arm_m3_Hwi_Module__root__V                              
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 1001b939  ti_sysbios_family_arm_m3_Hwi_Module__startupDone__S                       
 20000144  ti_sysbios_family_arm_m3_Hwi_Module__state__V                             
@@ -2664,11 +3007,19 @@ ffffffff  binit
 1001b515  ti_sysbios_family_arm_m3_Hwi_Object__get__S                               
 0000120c  ti_sysbios_family_arm_m3_Hwi_Object__table__C                             
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001b9c  ti_sysbios_family_arm_m3_Hwi_Object__table__V                             
 1001bf79  ti_sysbios_family_arm_m3_Hwi_Params__init__S                              
 00001210  ti_sysbios_family_arm_m3_Hwi_ccr__C                                       
 1001aabd  ti_sysbios_family_arm_m3_Hwi_construct                                    
 000063c1  ti_sysbios_family_arm_m3_Hwi_construct2__E                                
+=======
+20001b80  ti_sysbios_family_arm_m3_Hwi_Object__table__V                             
+1001bf79  ti_sysbios_family_arm_m3_Hwi_Params__init__S                              
+00001210  ti_sysbios_family_arm_m3_Hwi_ccr__C                                       
+1001aabd  ti_sysbios_family_arm_m3_Hwi_construct                                    
+00006355  ti_sysbios_family_arm_m3_Hwi_construct2__E                                
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001b80  ti_sysbios_family_arm_m3_Hwi_Object__table__V                             
 1001bf79  ti_sysbios_family_arm_m3_Hwi_Params__init__S                              
@@ -2723,7 +3074,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 00001028  ti_sysbios_gates_GateHwi_Module__FXNS__C                                  
 00001286  ti_sysbios_gates_GateHwi_Module__id__C                                    
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001be4  ti_sysbios_gates_GateHwi_Module__root__V                                  
+=======
+20001bdc  ti_sysbios_gates_GateHwi_Module__root__V                                  
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001bdc  ti_sysbios_gates_GateHwi_Module__root__V                                  
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2741,7 +3096,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 0000104c  ti_sysbios_gates_GateMutex_Module__FXNS__C                                
 00001288  ti_sysbios_gates_GateMutex_Module__id__C                                  
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001bec  ti_sysbios_gates_GateMutex_Module__root__V                                
+=======
+20001be4  ti_sysbios_gates_GateMutex_Module__root__V                                
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001be4  ti_sysbios_gates_GateMutex_Module__root__V                                
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2780,7 +3139,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001c039  ti_sysbios_hal_Hwi_Instance_finalize__E                                   
 1001b81d  ti_sysbios_hal_Hwi_Instance_init__E                                       
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001bf4  ti_sysbios_hal_Hwi_Module__root__V                                        
+=======
+20001bec  ti_sysbios_hal_Hwi_Module__root__V                                        
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001bec  ti_sysbios_hal_Hwi_Module__root__V                                        
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2817,7 +3180,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 0000122c  ti_sysbios_heaps_HeapMem_Module__gateObj__C                               
 0000128a  ti_sysbios_heaps_HeapMem_Module__id__C                                    
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001bfc  ti_sysbios_heaps_HeapMem_Module__root__V                                  
+=======
+20001bf4  ti_sysbios_heaps_HeapMem_Module__root__V                                  
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001bf4  ti_sysbios_heaps_HeapMem_Module__root__V                                  
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2829,7 +3196,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001b5c5  ti_sysbios_heaps_HeapMem_Object__get__S                                   
 00001234  ti_sysbios_heaps_HeapMem_Object__table__C                                 
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001bb4  ti_sysbios_heaps_HeapMem_Object__table__V                                 
+=======
+20001b98  ti_sysbios_heaps_HeapMem_Object__table__V                                 
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001b98  ti_sysbios_heaps_HeapMem_Object__table__V                                 
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2839,7 +3210,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001b3fd  ti_sysbios_heaps_HeapMem_free__E                                          
 1001aefd  ti_sysbios_heaps_HeapMem_getStats__E                                      
 <<<<<<< HEAD
+<<<<<<< HEAD
 000059b5  ti_sysbios_heaps_HeapMem_initPrimary__I                                   
+=======
+00005995  ti_sysbios_heaps_HeapMem_initPrimary__I                                   
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00005995  ti_sysbios_heaps_HeapMem_initPrimary__I                                   
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2853,7 +3228,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001b1c5  ti_sysbios_knl_Clock_Instance_init__E                                     
 1001cb6c  ti_sysbios_knl_Clock_Module_State_clockQ__O                               
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001c04  ti_sysbios_knl_Clock_Module__root__V                                      
+=======
+20001bfc  ti_sysbios_knl_Clock_Module__root__V                                      
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001bfc  ti_sysbios_knl_Clock_Module__root__V                                      
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2880,8 +3259,13 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001c0d9  ti_sysbios_knl_Clock_delete                                               
 1001c0dd  ti_sysbios_knl_Clock_destruct                                             
 <<<<<<< HEAD
+<<<<<<< HEAD
 00006dc9  ti_sysbios_knl_Clock_doTick__I                                            
 00006811  ti_sysbios_knl_Clock_getTicksUntilInterrupt__E                            
+=======
+00006d29  ti_sysbios_knl_Clock_doTick__I                                            
+00006771  ti_sysbios_knl_Clock_getTicksUntilInterrupt__E                            
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00006d29  ti_sysbios_knl_Clock_doTick__I                                            
 00006771  ti_sysbios_knl_Clock_getTicksUntilInterrupt__E                            
@@ -2901,11 +3285,19 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001bdbf  ti_sysbios_knl_Clock_triggerFunc__I                                       
 1001a2f1  ti_sysbios_knl_Clock_walkQueueDynamic__E                                  
 <<<<<<< HEAD
+<<<<<<< HEAD
 00004b25  ti_sysbios_knl_Clock_workFuncDynamic__E                                   
 1001a369  ti_sysbios_knl_Clock_workFunc__E                                          
 1001cb70  ti_sysbios_knl_Event_Instance_State_pendQ__O                              
 1001be49  ti_sysbios_knl_Event_Instance_init__E                                     
 20001c0c  ti_sysbios_knl_Event_Module__root__V                                      
+=======
+00004b05  ti_sysbios_knl_Clock_workFuncDynamic__E                                   
+1001a369  ti_sysbios_knl_Clock_workFunc__E                                          
+1001cb70  ti_sysbios_knl_Event_Instance_State_pendQ__O                              
+1001be49  ti_sysbios_knl_Event_Instance_init__E                                     
+20001c04  ti_sysbios_knl_Event_Module__root__V                                      
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00004b05  ti_sysbios_knl_Clock_workFuncDynamic__E                                   
 1001a369  ti_sysbios_knl_Clock_workFunc__E                                          
@@ -2938,7 +3330,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001a4c5  ti_sysbios_knl_Mailbox_Instance_finalize__E                               
 10019dad  ti_sysbios_knl_Mailbox_Instance_init__E                                   
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001c14  ti_sysbios_knl_Mailbox_Module__root__V                                    
+=======
+20001c0c  ti_sysbios_knl_Mailbox_Module__root__V                                    
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001c0c  ti_sysbios_knl_Mailbox_Module__root__V                                    
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2961,7 +3357,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001a0ed  ti_sysbios_knl_Mailbox_post__E                                            
 1001c073  ti_sysbios_knl_Queue_Instance_init__E                                     
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001c1c  ti_sysbios_knl_Queue_Module__root__V                                      
+=======
+20001c14  ti_sysbios_knl_Queue_Module__root__V                                      
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001c14  ti_sysbios_knl_Queue_Module__root__V                                      
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2983,7 +3383,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001bd19  ti_sysbios_knl_Queue_get__E                                               
 1001c101  ti_sysbios_knl_Queue_head__E                                              
 <<<<<<< HEAD
+<<<<<<< HEAD
 0000702d  ti_sysbios_knl_Queue_insert__E                                            
+=======
+00006f8d  ti_sysbios_knl_Queue_insert__E                                            
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00006f8d  ti_sysbios_knl_Queue_insert__E                                            
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -2994,7 +3398,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001b7cd  ti_sysbios_knl_Semaphore_Instance_finalize__E                             
 1001a685  ti_sysbios_knl_Semaphore_Instance_init__E                                 
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001c24  ti_sysbios_knl_Semaphore_Module__root__V                                  
+=======
+20001c1c  ti_sysbios_knl_Semaphore_Module__root__V                                  
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001c1c  ti_sysbios_knl_Semaphore_Module__root__V                                  
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -3016,7 +3424,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001a9a5  ti_sysbios_knl_Swi_Instance_init__E                                       
 20001ab0  ti_sysbios_knl_Swi_Module_State_0_readyQ__A                               
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001c2c  ti_sysbios_knl_Swi_Module__root__V                                        
+=======
+20001c24  ti_sysbios_knl_Swi_Module__root__V                                        
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001c24  ti_sysbios_knl_Swi_Module__root__V                                        
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -3033,7 +3445,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001c015  ti_sysbios_knl_Swi_Params__init__S                                        
 1001ad79  ti_sysbios_knl_Swi_construct                                              
 <<<<<<< HEAD
+<<<<<<< HEAD
 00006bad  ti_sysbios_knl_Swi_construct2__E                                          
+=======
+00006b0d  ti_sysbios_knl_Swi_construct2__E                                          
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00006b0d  ti_sysbios_knl_Swi_construct2__E                                          
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -3043,9 +3459,15 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001bf11  ti_sysbios_knl_Swi_disable__E                                             
 1001bf21  ti_sysbios_knl_Swi_enabled__E                                             
 <<<<<<< HEAD
+<<<<<<< HEAD
 00006f59  ti_sysbios_knl_Swi_getTrigger__E                                          
 00001264  ti_sysbios_knl_Swi_numPriorities__C                                       
 00006ced  ti_sysbios_knl_Swi_or__E                                                  
+=======
+00006eb9  ti_sysbios_knl_Swi_getTrigger__E                                          
+00001264  ti_sysbios_knl_Swi_numPriorities__C                                       
+00006c4d  ti_sysbios_knl_Swi_or__E                                                  
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00006eb9  ti_sysbios_knl_Swi_getTrigger__E                                          
 00001264  ti_sysbios_knl_Swi_numPriorities__C                                       
@@ -3063,10 +3485,17 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001a059  ti_sysbios_knl_Task_Instance_finalize__E                                  
 10019ce1  ti_sysbios_knl_Task_Instance_init__E                                      
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001c50  ti_sysbios_knl_Task_Module_State_0_idleTask__A                            
 20001b10  ti_sysbios_knl_Task_Module_State_0_readyQ__A                              
 1001cb88  ti_sysbios_knl_Task_Module_State_inactiveQ__O                             
 20001c34  ti_sysbios_knl_Task_Module__root__V                                       
+=======
+20001c48  ti_sysbios_knl_Task_Module_State_0_idleTask__A                            
+20001b10  ti_sysbios_knl_Task_Module_State_0_readyQ__A                              
+1001cb88  ti_sysbios_knl_Task_Module_State_inactiveQ__O                             
+20001c2c  ti_sysbios_knl_Task_Module__root__V                                       
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001c48  ti_sysbios_knl_Task_Module_State_0_idleTask__A                            
 20001b10  ti_sysbios_knl_Task_Module_State_0_readyQ__A                              
@@ -3107,7 +3536,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001bd89  ti_sysbios_knl_Task_enter__I                                              
 1001b119  ti_sysbios_knl_Task_exit__E                                               
 <<<<<<< HEAD
+<<<<<<< HEAD
 00007031  ti_sysbios_knl_Task_getEnv__E                                             
+=======
+00006f91  ti_sysbios_knl_Task_getEnv__E                                             
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00006f91  ti_sysbios_knl_Task_getEnv__E                                             
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -3120,7 +3553,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001ae69  ti_sysbios_knl_Task_schedule__I                                           
 1001c02d  ti_sysbios_knl_Task_self__E                                               
 <<<<<<< HEAD
+<<<<<<< HEAD
 000048b9  ti_sysbios_knl_Task_setPri__E                                             
+=======
+00004899  ti_sysbios_knl_Task_setPri__E                                             
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00004899  ti_sysbios_knl_Task_setPri__E                                             
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -3147,7 +3584,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 000002f0  uartCC26XXHWAttrs                                                         
 20001408  uartCC26XXObjects                                                         
 <<<<<<< HEAD
+<<<<<<< HEAD
 00006e01  wcslen                                                                    
+=======
+00006d61  wcslen                                                                    
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00006d61  wcslen                                                                    
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -3164,15 +3605,21 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 20000204  xdc_runtime_Error_Module__state__V                                        
 1001c6bd  xdc_runtime_Error_check__E                                                
 <<<<<<< HEAD
+<<<<<<< HEAD
 00006d05  xdc_runtime_Error_init__E                                                 
 000012f8  xdc_runtime_Error_maxDepth__C                                             
 000012a8  xdc_runtime_Error_policyFxn__C                                            
 00006afd  xdc_runtime_Error_policyMin__E                                            
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 00006c65  xdc_runtime_Error_init__E                                                 
 000012f8  xdc_runtime_Error_maxDepth__C                                             
 000012a8  xdc_runtime_Error_policyFxn__C                                            
 00006a5d  xdc_runtime_Error_policyMin__E                                            
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 1001c413  xdc_runtime_Error_policySpin__E                                           
 00001300  xdc_runtime_Error_policy__C                                               
@@ -3204,6 +3651,7 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 000012c0  xdc_runtime_Startup_execImpl__C                                           
 1001c415  xdc_runtime_Startup_exec__E                                               
 <<<<<<< HEAD
+<<<<<<< HEAD
 00006e13  xdc_runtime_Startup_exec__I                                               
 000003a0  xdc_runtime_Startup_firstFxns__A                                          
 00001290  xdc_runtime_Startup_firstFxns__C                                          
@@ -3212,6 +3660,8 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 000012c4  xdc_runtime_Startup_maxPasses__C                                          
 00007035  xdc_runtime_Startup_reset__I                                              
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 00006d73  xdc_runtime_Startup_exec__I                                               
 000003a0  xdc_runtime_Startup_firstFxns__A                                          
 00001290  xdc_runtime_Startup_firstFxns__C                                          
@@ -3219,6 +3669,9 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 00001298  xdc_runtime_Startup_lastFxns__C                                           
 000012c4  xdc_runtime_Startup_maxPasses__C                                          
 00006f95  xdc_runtime_Startup_reset__I                                              
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 1001c769  xdc_runtime_Startup_rtsDone__E                                            
 00000354  xdc_runtime_Startup_sfxnRts__A                                            
@@ -3230,8 +3683,13 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 000012d4  xdc_runtime_SysCallback_abortFxn__C                                       
 1001c715  xdc_runtime_SysCallback_abort__E                                          
 <<<<<<< HEAD
+<<<<<<< HEAD
 000046bb  xdc_runtime_SysCallback_defaultAbort                                      
 00004c53  xdc_runtime_SysCallback_defaultExit                                       
+=======
+0000469b  xdc_runtime_SysCallback_defaultAbort                                      
+00004c33  xdc_runtime_SysCallback_defaultExit                                       
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 0000469b  xdc_runtime_SysCallback_defaultAbort                                      
 00004c33  xdc_runtime_SysCallback_defaultExit                                       
@@ -3246,7 +3704,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001c0b1  xdc_runtime_System_Module_GateProxy_query__E                              
 1001c0b1  xdc_runtime_System_Module_GateProxy_query__E__mangled__                   
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001c3c  xdc_runtime_System_Module_State_0_atexitHandlers__A                       
+=======
+20001c34  xdc_runtime_System_Module_State_0_atexitHandlers__A                       
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 20001c34  xdc_runtime_System_Module_State_0_atexitHandlers__A                       
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -3274,7 +3736,11 @@ e000e000  ti_sysbios_family_arm_m3_Hwi_nvic
 1001c6ed  xdc_runtime_Text_ropeText__E                                              
 1001c735  xdc_runtime_Timestamp_SupportProxy_get32__E                               
 <<<<<<< HEAD
+<<<<<<< HEAD
 00006ebb  xdc_runtime_Timestamp_SupportProxy_get32__E__mangled__                    
+=======
+00006e1b  xdc_runtime_Timestamp_SupportProxy_get32__E__mangled__                    
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 00006e1b  xdc_runtime_Timestamp_SupportProxy_get32__E__mangled__                    
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
@@ -3342,15 +3808,21 @@ address   name
 000003e8  __TI_static_base__                                                        
 00000400  __STACK_SIZE                                                              
 <<<<<<< HEAD
+<<<<<<< HEAD
 000005a0  __TI_Handler_Table_Base                                                   
 000005ac  __TI_Handler_Table_Limit                                                  
 000005e8  __TI_CINIT_Base                                                           
 00000650  __TI_CINIT_Limit                                                          
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 00000598  __TI_Handler_Table_Base                                                   
 000005a4  __TI_Handler_Table_Limit                                                  
 000005e0  __TI_CINIT_Base                                                           
 00000648  __TI_CINIT_Limit                                                          
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 00001000  HEAPSIZE                                                                  
 00001000  ti_sysbios_heaps_HeapMem_Module__FXNS__C                                  
@@ -3454,6 +3926,7 @@ address   name
 00001331  __TI_printfi                                                              
 00001d7f  _nop                                                                      
 00001d81  mainThread                                                                
+<<<<<<< HEAD
 <<<<<<< HEAD
 00002115  PowerCC26XX_auxISR                                                        
 00002689  Power_sleep                                                               
@@ -3681,6 +4154,8 @@ address   name
 00007031  ti_sysbios_knl_Task_getEnv__E                                             
 00007035  xdc_runtime_Startup_reset__I                                              
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 000020f5  PowerCC26XX_auxISR                                                        
 00002669  Power_sleep                                                               
 000028a5  NOROM_SysCtrlSetRechargeBeforePowerDown                                   
@@ -3904,6 +4379,9 @@ address   name
 00006f8d  ti_sysbios_knl_Queue_insert__E                                            
 00006f91  ti_sysbios_knl_Task_getEnv__E                                             
 00006f95  xdc_runtime_Startup_reset__I                                              
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 0001ffa8  __ccfg                                                                    
 10019b00  ti_sysbios_rom_cortexm_cc26xx_r2_CC26xx_REVISION__C                       
@@ -4320,6 +4798,7 @@ address   name
 20001b40  ti_sysbios_knl_Clock_Object__table__V                                     
 20001b60  xdc_runtime_Error_IgnoreBlock                                             
 <<<<<<< HEAD
+<<<<<<< HEAD
 20001b80  gpioPinConfigs                                                            
 20001b9c  ti_sysbios_family_arm_m3_Hwi_Object__table__V                             
 20001bb4  ti_sysbios_heaps_HeapMem_Object__table__V                                 
@@ -4345,6 +4824,8 @@ address   name
 20001c50  ti_sysbios_knl_Task_Module_State_0_idleTask__A                            
 20001c54  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excActive__A                  
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 20001b80  ti_sysbios_family_arm_m3_Hwi_Object__table__V                             
 20001b98  ti_sysbios_heaps_HeapMem_Object__table__V                                 
 20001bb0  gpioPinConfigs                                                            
@@ -4369,6 +4850,9 @@ address   name
 20001c44  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excStack__A                   
 20001c48  ti_sysbios_knl_Task_Module_State_0_idleTask__A                            
 20001c4c  ti_sysbios_family_arm_m3_Hwi_Module_State_0_excActive__A                  
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 20004c00  __stack                                                                   
 20005000  __STACK_END                                                               
@@ -4383,7 +4867,11 @@ UNDEFED   SHT$$INIT_ARRAY$$Base
 UNDEFED   SHT$$INIT_ARRAY$$Limit                                                    
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [827 symbols]
+=======
+[825 symbols]
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 [825 symbols]
 >>>>>>> parent of a6e6b16... UART error & SPI still testing

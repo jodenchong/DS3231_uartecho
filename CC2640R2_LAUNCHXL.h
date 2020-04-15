@@ -95,10 +95,15 @@ extern const PIN_Config BoardGpioInitTable[];
 
 /* Discrete Inputs */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CC2640R2_LAUNCHXL_PIN_BTN1              IOID_23
 #define CC2640R2_LAUNCHXL_PIN_BTN2              IOID_24
 //#define CC2640R2_LAUNCHXL_PIN_BTN3              IOID_25
 //#define CC2640R2_LAUNCHXL_PIN_BTN4              IOID_26
+=======
+#define CC2640R2_LAUNCHXL_PIN_BTN1              IOID_13
+#define CC2640R2_LAUNCHXL_PIN_BTN2              IOID_14
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 #define CC2640R2_LAUNCHXL_PIN_BTN1              IOID_13
 #define CC2640R2_LAUNCHXL_PIN_BTN2              IOID_14
@@ -143,9 +148,15 @@ extern const PIN_Config BoardGpioInitTable[];
 
 /* SPI Board */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CC2640R2_LAUNCHXL_SPI0_MISO             IOID_2         
 #define CC2640R2_LAUNCHXL_SPI0_MOSI             IOID_0         
 #define CC2640R2_LAUNCHXL_SPI0_CLK              IOID_1        
+=======
+#define CC2640R2_LAUNCHXL_SPI0_MISO             IOID_8          /* RF1.20 */
+#define CC2640R2_LAUNCHXL_SPI0_MOSI             IOID_9          /* RF1.18 */
+#define CC2640R2_LAUNCHXL_SPI0_CLK              IOID_10         /* RF1.16 */
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
 #define CC2640R2_LAUNCHXL_SPI0_MISO             IOID_8          /* RF1.20 */
 #define CC2640R2_LAUNCHXL_SPI0_MOSI             IOID_9          /* RF1.18 */
@@ -244,6 +255,7 @@ typedef enum CC2640R2_LAUNCHXL_GPIOName {
     CC2640R2_LAUNCHXL_GPIO_S1 = 0,
     CC2640R2_LAUNCHXL_GPIO_S2,
 <<<<<<< HEAD
+<<<<<<< HEAD
 //    CC2640R2_LAUNCHXL_GPIO_S3,
 //    CC2640R2_LAUNCHXL_GPIO_S4,
 
@@ -251,6 +263,10 @@ typedef enum CC2640R2_LAUNCHXL_GPIOName {
     CC2640R2_LAUNCHXL_GPIO_LED2,
     CC2640R2_LAUNCHXL_GPIO_LED3,
     CC2640R2_LAUNCHXL_GPIO_LED4,
+=======
+    CC2640R2_LAUNCHXL_GPIO_LED_GREEN,
+    CC2640R2_LAUNCHXL_GPIO_LED_RED,
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 =======
     CC2640R2_LAUNCHXL_GPIO_LED_GREEN,
     CC2640R2_LAUNCHXL_GPIO_LED_RED,

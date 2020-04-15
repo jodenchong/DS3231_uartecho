@@ -58,8 +58,11 @@
 #define SET_YEAR    0x06
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 //uint32_t wantedRxchar;            // Number of char *s received so far
 //uint8_t rxBuf[32];   // Receive buffer
 //uint8_t txBuf[32];   // Transmit buffer
@@ -104,6 +107,9 @@
 //        UART_write(handle, &rxBuf, size);
 
 //}
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 uint8_t bcd2bin(uint8_t val)    { return val - 6 * (val >> 4); }
 uint8_t decToBcd(uint8_t val)   { return ( (val/10*16) + (val%10) ); }
@@ -164,6 +170,7 @@ char get_DS3231(I2C_Handle handle, TIMEDATE timedate){
 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 void system_print(UART_Handle handle, uint8_t * data){
     char  TXdata[64], i;
     for(i = 0; i < 64; i++) TXdata[i] = 0;
@@ -173,10 +180,14 @@ void system_print(UART_Handle handle, uint8_t * data){
 =======
 
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
+
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 void *mainThread(void *arg0)
 {
     char  TXdata[64];
     char  RXdata[64];
+<<<<<<< HEAD
 <<<<<<< HEAD
     UART_Handle uart;
     UART_Params uartParams;
@@ -186,6 +197,8 @@ void *mainThread(void *arg0)
     I2C_Params      i2cParams;
     uint8_t Temp1, Temp2;
 =======
+=======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 
     UART_Handle uart;
     UART_Params uartParams;
@@ -200,6 +213,9 @@ void *mainThread(void *arg0)
 
     uint8_t Temp1, Temp2;
 
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
     uint8_t i;
     for(i = 0; i < 64; i++) TXdata[i] = 0;
@@ -212,6 +228,9 @@ void *mainThread(void *arg0)
 =======
     /* Turn on user LED */
     GPIO_write(Board_GPIO_LED0, Board_GPIO_LED_ON);
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 
     /* Create a UART with data processing off. */
@@ -221,6 +240,7 @@ void *mainThread(void *arg0)
     uartParams.readReturnMode = UART_RETURN_FULL;
     uartParams.readEcho = UART_ECHO_OFF;
     uartParams.baudRate = 115200;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     uart = UART_open(Board_UART0, &uartParams);
@@ -232,6 +252,12 @@ void *mainThread(void *arg0)
 //    uartParams.readCallback = readCallback; // your callback function
 
     uart = UART_open(Board_UART0, &uartParams);
+=======
+//    uartParams.readMode = UART_MODE_CALLBACK; // sets up RX for callback mode
+//    uartParams.readCallback = readCallback; // your callback function
+
+    uart = UART_open(Board_UART0, &uartParams);
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
 //    wantedRxchar *s = 1;
 //    int rxchar *s = UART_read(uart, rxBuf, wantedRxchar *s);
     if (uart == NULL) {
@@ -240,6 +266,9 @@ void *mainThread(void *arg0)
     }
     sprintf(TXdata,"UART init done:\r\n");
     UART_write(uart, TXdata, sizeof(TXdata));
+<<<<<<< HEAD
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
 
     /* Create I2C for usage */
@@ -252,6 +281,7 @@ void *mainThread(void *arg0)
         while (1);
     }
     else {
+<<<<<<< HEAD
 <<<<<<< HEAD
         system_print(uart,"I2C init done\r\n");
 =======
@@ -272,6 +302,17 @@ void *mainThread(void *arg0)
             if(RXdata[0] == 'T' && RXdata[1] == '3')  GPIO_toggle(Board_SPI_FLASH_CS);
             
 =======
+>>>>>>> parent of a6e6b16... UART error & SPI still testing
+=======
+        sprintf(TXdata,"I2C Initialized!\r\n");
+        UART_write(uart, TXdata, sizeof(TXdata));
+    }
+
+
+
+    /* Start receiving */
+    while(1){
+        if(UART_read(uart, RXdata, sizeof(RXdata)) > 0){
 >>>>>>> parent of a6e6b16... UART error & SPI still testing
             if(RXdata[0] == 'S' && RXdata[1] == 'T'){
                 // Read Year first
